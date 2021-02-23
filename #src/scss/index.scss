@@ -1,0 +1,49 @@
+//Подключение миксинов шрифтов
+@import 'moduls/mixins/_normalize';
+@import 'moduls/mixins/_font-face';
+//@import 'moduls/mixins/_fonts'; не включать!!! Шрифты только переносить.
+@import 'moduls/mixins/_container';
+//@import 'moduls/mixins/_adaptiv-fonts';
+
+/*-Подключение шрифтов-*/
+// Перенести шрифты из файла:#src/scss/moduls/mixins/_fonts.scss'
+@include font-face('AkzidenzGrotesk', 'AkzidenzGrotesk-boldCond', 700);
+//font-family: 'AkzidenzGrotesk', sans-serif;
+@include font-face('BebasNeue', 'BebasNeue-regular', 400);
+//font-family: 'BebasNeue', sans-serif;
+
+//Переменные
+$accent: #2692ff; //Цвет голубой.
+$text: #9c9c9c; //Цвет серый.
+$maxWidth: 1170; //Максимальная ширина контента для мексина adaptiv-font.
+
+//Пример внесения миксина адаптивного шрифта и контейнера
+// .box p {
+//     @include adaptiv-font(30, 20);
+//     font-size: 30px;
+//     @include container ($maxWidth)
+//     color: $blue;
+// }
+
+/*- Стили -*/
+/*- Глобальные стили-*/
+body {
+	font-size: 16px;
+}
+
+.container {
+	@include container($maxWidth);
+}
+ul{
+	&>li{
+		color: $accent;
+	}
+}
+.btn {
+}
+/*- Header -*/
+@import 'moduls/01_headers';
+/*- Content -*/
+
+/*- Footer -*/
+@import 'moduls/15_footer';
