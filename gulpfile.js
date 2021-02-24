@@ -1,4 +1,5 @@
 /*- Сборка 22.02.2021г. -*/
+/*- Сборка 22.02.2021г. -*/
 const {
     src,
     dest,
@@ -71,9 +72,29 @@ const scss = () => {
         .pipe(dest('dist/css'));
 };
 
+/* Перенос папки с файлами .json */
+const jsonFolder = () => {
+    return src('#src/assets/json/**.json')
+
+        .pipe(dest('dist/json/'));
+};
+/* Перенос папки с файломи ВИДЕО */
+const videoFolder = () => {
+    return src('#src/assets/video/**')
+
+        .pipe(dest('dist/video/'));
+};
+
+/* Перенос папки с фавиконами */
+const iconsFolder = () => {
+    return src('#src/assets/icons/**')
+
+        .pipe(dest('dist/icons/'));
+};
+
 /*Функция для работы с файлами .js*/
 const scripts = () => {
-    return src('./#src/js/main.js')
+    return src('./#src/js/**.js')
         .pipe(webpackStream({
             mode: 'development',
             output: {
@@ -220,6 +241,9 @@ const watchFile = () => {
     });
     watch('#src/html/**.html', series(html)).on('change', sync.reload);
     watch('#src/scss/**/*.scss', series(scss)).on('change', sync.reload);
+    watch('#src/assets/json/*.json', series(jsonFolder)).on('change', sync.reload);
+    watch('#src/assets/video/**', series(videoFolder)).on('change', sync.reload);
+    watch('#src/assets/icons/**', series(iconsFolder)).on('change', sync.reload);
     watch('#src/assets/img/**/*.png', series(imgTo)).on('change', sync.reload);
     watch('#src/assets/img/**/*.jpg', series(imgTo)).on('change', sync.reload);
     watch('#src/assets/img/**/*.jpeg', series(imgTo)).on('change', sync.reload);
@@ -230,7 +254,7 @@ const watchFile = () => {
     watch('#src/resources/**', series(resources)).on('change', sync.reload);
     watch('#src/assets/fonts/**.ttf', series(fonts)).on('change', sync.reload);
     watch('#src/assets/fonts/**.ttf', series(fontsStyle)).on('change', sync.reload);
-    watch('#src/js/*.js', series(scripts)).on('change', sync.reload);
+    watch('#src/js/**.js', series(scripts)).on('change', sync.reload);
 };
 //exports.watch = watchFile;
 exports.otf2ttf = otf2ttf; // Для преобразования шрифта с формата .otf в формат  .ttf, нужно набрать 
@@ -238,7 +262,7 @@ exports.otf2ttf = otf2ttf; // Для преобразования шрифта �
 
 
 //сборка по дефолту, нужно набрать команду: gulp
-exports.default = series(clear, parallel(html, scripts, fonts, resources, imgTo, svgSprites), fontsStyle, scss, watchFile);
+exports.default = series(clear, parallel(html, scripts, fonts, resources, imgTo, svgSprites, jsonFolder, videoFolder, iconsFolder), fontsStyle, scss, watchFile);
 
 
 //Сборка build:
@@ -286,7 +310,7 @@ const scssBuild = () => {
 };
 /*Функция для работы с файлами .js*/
 const scriptsBuild = () => {
-    return src('./#src/js/main.js')
+    return src('./#src/js/**.js')
         .pipe(webpackStream({
             mode: 'production',
             output: {
@@ -318,4 +342,4 @@ const scriptsBuild = () => {
 };
 //exports.scriptsBuild = scriptsBuild;
 //Что бы собрать сборку build, нужно набрать команду: gulp build
-exports.build = series(clear, parallel(htmlBuild, scriptsBuild, fonts, resources, svgSprites), fontsStyle, scssBuild, tinypng);
+exports.build = series(clear, parallel(htmlBuild, scriptsBuild, fonts, resources, svgSprites, jsonFolder, videoFolder, iconsFolder), fontsStyle, scssBuild, tinypng);
