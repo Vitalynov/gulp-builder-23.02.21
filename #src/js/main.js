@@ -1,8 +1,8 @@
 /* 
 Примеры webpack
 Экспорты:
-    export let one=1;
-        let two = 2
+    export let one = 1;
+           let two = 2
     export {two}
     export defoult function arr(){ - пеоедаем по дефолту
         console.log('Helo!');
@@ -16,3 +16,13 @@
     import arr from './moduls/function'; - принимаем по дефолту
         arr();
 */
+// импорт блоков Swiper
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    'use strict';
+
+
+});

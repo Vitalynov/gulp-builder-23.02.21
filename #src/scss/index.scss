@@ -7,15 +7,20 @@
 
 /*-Подключение шрифтов-*/
 // Перенести шрифты из файла:#src/scss/moduls/mixins/_fonts.scss'
-@include font-face('AkzidenzGrotesk', 'AkzidenzGrotesk-boldCond', 700);
-//font-family: 'AkzidenzGrotesk', sans-serif;
-@include font-face('BebasNeue', 'BebasNeue-regular', 400);
-//font-family: 'BebasNeue', sans-serif;
+@include font-face('Barlow', 'Barlow-Bold', 700);
+//font-family: 'Barlow', sans-serif;
+@include font-face('Barlow', 'Barlow-Regular', 400);
+//font-family: 'Barlow', sans-serif;
+
 
 //Переменные
 $accent: #2692ff; //Цвет голубой.
 $text: #9c9c9c; //Цвет серый.
 $maxWidth: 1170; //Максимальная ширина контента для мексина adaptiv-font.
+$svg: #2f3035;
+
+//подключаем vendors
+@import '../../node_modules/swiper/swiper-bundle';
 
 //Пример внесения миксина адаптивного шрифта и контейнера
 // .box p {
@@ -28,19 +33,18 @@ $maxWidth: 1170; //Максимальная ширина контента для
 /*- Стили -*/
 /*- Глобальные стили-*/
 body {
-	font-size: 16px;
+	font-family: 'SFProDisplay', sans-serif;
+	font-size: 20px;
+	color: $text;
+	display: flex;
+	flex-direction: column;
 }
 
 .container {
 	@include container($maxWidth);
 }
-ul{
-	&>li{
-		color: $accent;
-	}
-}
-.btn {
-}
+
+
 /*- Header -*/
 @import 'moduls/01_headers';
 /*- Content -*/

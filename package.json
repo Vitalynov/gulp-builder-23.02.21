@@ -2,7 +2,7 @@
   "name": "gulp",
   "version": "1.0.0",
   "description": "gulp-builder 23.02.21",
-  "main": "index.html",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,9 @@
   "author": "Vitalynov",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
     "@babel/core": "^7.12.17",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.12.17",
     "@babel/register": "^7.12.13",
     "babel-loader": "^8.2.2",
@@ -26,6 +28,7 @@
     "gulp-file-include": "^2.3.0",
     "gulp-fonter": "^0.3.0",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
     "gulp-notify": "^3.2.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
@@ -38,6 +41,10 @@
     "gulp-uglify-es": "^2.0.0",
     "node-sass": "^5.0.0",
     "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0",
     "webpack-stream": "^6.1.2"
+  },
+  "dependencies": {
+    "swiper": "^6.4.15"
   }
 }
